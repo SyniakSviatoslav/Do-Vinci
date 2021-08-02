@@ -1,0 +1,99 @@
+@import "./base/core";
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+
+* {
+   font-family: $primaryFont;
+   box-sizing: border-box;
+   font-size: $s;
+}
+
+
+
+body {
+margin: 0;
+height: 100vh;
+background-image: url(/all.svg);
+background-size: 100%;
+background-repeat: no-repeat;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.calculator {
+  height: 523px;
+  width: 306px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background;
+  border-radius: $s;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  box-shadow: -10px -10px 30px #FFFFFF, 10px 10px 30px rgba(174, 174, 192, 0.4);
+}
+
+.blackscreen {
+  width: 305px;
+  height: 155px;
+  background-color: $black;
+  border-radius: $s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  width: 100%;
+  height: 50%;
+  font-size: $m;
+  background-color: $black;
+  border-radius: $s;
+  color: $white;
+  border: none;
+  padding-left: $xs;
+  padding-right: $xs;
+}
+
+
+.buttons {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-left: $xs;
+}
+
+.row {
+  padding-top: 23px;
+}
+
+.numbers {
+width: $ms;
+height: $ms;
+background: $grey;
+box-shadow: -10px -10px 30px #FFFFFF, 10px 10px 24px rgba(174, 174, 192, 0.4);
+border-radius: $es;
+border: none;
+margin-right: $xs;
+cursor: pointer;
+}
+
+.numbers:hover {
+background-color: $Hover;
+}
+
+#special {
+background: $pink;
+}
+
+#special:hover {
+background-color: $Hover;
+}
+
+#null {
+  width: 107px;
+}
+
