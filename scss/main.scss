@@ -1,99 +1,211 @@
 @import "./base/core";
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=MonteCarlo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap');
 
 * {
-   font-family: $primaryFont;
-   box-sizing: border-box;
-   font-size: $s;
+  padding: 0;
+  margin: 0;
 }
-
-
 
 body {
-margin: 0;
-height: 100vh;
-background-image: url(/all.svg);
-background-size: 100%;
-background-repeat: no-repeat;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: $gradient;
+  font-family: $primaryFont;
 }
 
-.calculator {
-  height: 523px;
-  width: 306px;
+#add {
+  display: flex;
+  justify-content: center;
+  color: $white;
+}
+
+button:hover {
+  cursor: pointer;
+  background: $gradient;
+  box-shadow:  $hover_shadow;
+}
+
+button:focus {
+  cursor: pointer;
+  background: $orange;
+box-shadow: $focus_shadow;
+}
+
+ul {
+  list-style-type: none; 
+}
+
+.container {
+  position: relative;
+  min-width: 700px;
+  margin-top: $ml;
+  margin-bottom: $ml;
+  border-radius: $xs;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $background;
-  border-radius: $s;
-  border: 1px solid rgba(0, 0, 0, 0.21);
-  box-shadow: -10px -10px 30px #FFFFFF, 10px 10px 30px rgba(174, 174, 192, 0.4);
+  padding: $s;
+  box-shadow: $container_shadow;
 }
 
-.blackscreen {
-  width: 305px;
-  height: 155px;
-  background-color: $black;
-  border-radius: $s;
+h1 {
+  color: $white;
+  font-size: $l_font;
+  font-family: $primaryFont;
+}
+
+.do-form {
+  margin: 40px 0px;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.screen {
-  width: 100%;
-  height: 50%;
-  font-size: $m;
-  background-color: $black;
-  border-radius: $s;
+.do-input {
+  cursor: pointer;
+  width: 300px;
+  border: none;
+  outline: none;
+  margin-right: $xs;
+  border-radius: $ts;
+  padding: $es;
+  font-size: $m_font;
+  box-shadow:  $container_shadow;
+  font-family: $secondaryFont;
+  font-weight: 700;
+}
+
+.add-button {
   color: $white;
   border: none;
-  padding-left: $xs;
-  padding-right: $xs;
+  outline: none;
+  border-radius: $ts;
+  padding: $ts;
+  font-size: $m_font;
+  background: $orange;
+  box-shadow:  $container_shadow;
+  font-family: $secondaryFont;
 }
 
+.do-items {
+  min-width: 380px;
+  box-shadow:  $item_shadow;
+}
 
-.buttons {
+.item {
+  background-color: $white;
+  padding: $es;
+  font-size: $ml_font;
+}
+
+.item:first-child {
+  border-top-left-radius: $border_size;
+  border-top-right-radius: $border_size;
+}
+
+.item:last-child {
+  border-bottom-left-radius: $border_size;
+  border-bottom-right-radius: $border_size;
+}
+
+.delete-button {
+  float: right;
+  background-color:transparent;
+  color: $red;
   border: none;
+  outline: none;
+  border-radius: $border_size;
+  padding: 2px 5px;
+  margin-left: $es;
+  font-size: $m_font;
+  font-weight: 550;
+}
+
+.end-container {
+  width: 380px;
+}
+
+.delete-all-button {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding-left: $xs;
+  float: right;
+  margin-top: $ms;
+  margin-left: $ms;
+  color: $white;
+  border: none;
+  outline: none;
+  border-radius: $ts;
+  padding: $ts;
+  font-size: $m_font;
+  background: $orange;
+  box-shadow: $container_shadow;
+  font-family: $secondaryFont
 }
 
-.row {
-  padding-top: 23px;
+.delete-done-button {
+  display: flex;
+  float: right;
+  margin-top: $ms;
+  margin-left: $xs;
+  color: $white;
+  border: none;
+  outline: none;
+  border-radius: $ts;
+  padding: $ts;
+  font-size: $m_font;
+  background: $orange;
+  box-shadow: $container_shadow;
+  font-family: $secondaryFont;
+  
 }
 
-.numbers {
-width: $ms;
-height: $ms;
-background: $grey;
-box-shadow: -10px -10px 30px #FFFFFF, 10px 10px 24px rgba(174, 174, 192, 0.4);
-border-radius: $es;
-border: none;
-margin-right: $xs;
+.delete-button:hover {
+border-radius: $ts;
+background: $white_hover_background;
+box-shadow: $white_hover;
+}
+
+.delete-button:focus {
+  border-radius: $ts;
+  background: $white;
+  box-shadow: $white_hover;
+  }
+
+.checked { 
+  text-decoration: line-through;
+}
+
+input[type='checkbox']{
+  cursor: pointer;
+  width: $s !important;
+  height: $s !important;
+  padding: $ts;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  font-size: $s_font;
+  line-height: $ts;
+  border-radius: $ts;
+background: $white;
+
+}
+
+input[type='checkbox']:checked:after {
+  content: '✔';
+  color: $green;
+  cursor: pointer;
+}
+
+
+
+.checkbox:hover{
+  border-radius: $ts;
+background: $white_hover_background;
+box-shadow:  $white_hover;
 cursor: pointer;
 }
 
-.numbers:hover {
-background-color: $Hover;
-}
 
-#special {
-background: $pink;
-}
-
-#special:hover {
-background-color: $Hover;
-}
-
-#null {
-  width: 107px;
-}
 

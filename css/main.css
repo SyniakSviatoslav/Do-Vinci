@@ -1,21 +1,181 @@
+@charset "UTF-8";
 /* Mixins are going next */
-@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=MonteCarlo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap");
 * {
-  font-family: "Oswald", sans-serif;
-  box-sizing: border-box;
-  font-size: 25px; }
+  padding: 0;
+  margin: 0; }
 
 body {
-  margin: 0;
-  height: 100vh;
-  background-image: url(/images/Da-Vinci.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(#f3a153, #e8a15e);
+  font-family: "Caveat", cursive; }
+
+#add {
+  display: flex;
+  justify-content: center;
+  color: #f7fff7; }
+
+button:hover {
+  cursor: pointer;
+  background: linear-gradient(#f3a153, #e8a15e);
+  box-shadow: 20px 20px 40px #cf8947, -20px -20px 40px #ffb95f; }
+
+button:focus {
+  cursor: pointer;
+  background: #f3a153;
+  box-shadow: inset 20px 20px 40px #cf8947, inset -20px -20px 40px #ffb95f; }
+
+ul {
+  list-style-type: none; }
+
+.container {
+  position: relative;
+  min-width: 700px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; }
+  align-items: center;
+  padding: 20px;
+  box-shadow: 30px 30px 60px #cf8947, -30px -30px 60px #ffb95f; }
 
+h1 {
+  color: #f7fff7;
+  font-size: 4rem;
+  font-family: "Caveat", cursive; }
 
+.do-form {
+  margin: 40px 0px;
+  display: flex;
+  justify-content: center; }
+
+.do-input {
+  cursor: pointer;
+  width: 300px;
+  border: none;
+  outline: none;
+  margin-right: 15px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.1rem;
+  box-shadow: 30px 30px 60px #cf8947, -30px -30px 60px #ffb95f;
+  font-family: "Arimo", sans-serif;
+  font-weight: 700; }
+
+.add-button {
+  color: #f7fff7;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.1rem;
+  background: #f3a153;
+  box-shadow: 30px 30px 60px #cf8947, -30px -30px 60px #ffb95f;
+  font-family: "Arimo", sans-serif; }
+
+.do-items {
+  min-width: 380px;
+  box-shadow: 13px 13px 26px #cf8947, -13px -13px 26px #ffb95f; }
+
+.item {
+  background-color: #f7fff7;
+  padding: 10px;
+  font-size: 1.5rem; }
+
+.item:first-child {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px; }
+
+.item:last-child {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px; }
+
+.delete-button {
+  float: right;
+  background-color: transparent;
+  color: red;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  padding: 2px 5px;
+  margin-left: 10px;
+  font-size: 1.1rem;
+  font-weight: 550; }
+
+.end-container {
+  width: 380px; }
+
+.delete-all-button {
+  display: flex;
+  float: right;
+  margin-top: 30px;
+  margin-left: 30px;
+  color: #f7fff7;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.1rem;
+  background: #f3a153;
+  box-shadow: 30px 30px 60px #cf8947, -30px -30px 60px #ffb95f;
+  font-family: "Arimo", sans-serif; }
+
+.delete-done-button {
+  display: flex;
+  float: right;
+  margin-top: 30px;
+  margin-left: 15px;
+  color: #f7fff7;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.1rem;
+  background: #f3a153;
+  box-shadow: 30px 30px 60px #cf8947, -30px -30px 60px #ffb95f;
+  font-family: "Arimo", sans-serif; }
+
+.delete-button:hover {
+  border-radius: 5px;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 5px 5px 11px #cfcfcf, -5px -5px 11px #ffffff; }
+
+.delete-button:focus {
+  border-radius: 5px;
+  background: #f7fff7;
+  box-shadow: 5px 5px 11px #cfcfcf, -5px -5px 11px #ffffff; }
+
+.checked {
+  text-decoration: line-through; }
+
+input[type='checkbox'] {
+  cursor: pointer;
+  width: 20px !important;
+  height: 20px !important;
+  padding: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  font-size: 0.8rem;
+  line-height: 5px;
+  border-radius: 5px;
+  background: #f7fff7; }
+
+input[type='checkbox']:checked:after {
+  content: '✔';
+  color: green;
+  cursor: pointer; }
+
+.checkbox:hover {
+  border-radius: 5px;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 5px 5px 11px #cfcfcf, -5px -5px 11px #ffffff;
+  cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */

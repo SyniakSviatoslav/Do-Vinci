@@ -1,19 +1,41 @@
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-   <title>Do Vinci</title>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <link rel="stylesheet" href="css/main.css" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <title>Do Vinci</title>
 </head>
 
 <body>
-   
 
+  <div class="container">
+    <h1>Do Vinci</h1>
+
+    <form class="do-form">
+      <input type="text" class="do-input" placeholder="Add a new task..." maxlength="
+      50">
+      <button type="submit" class="add-button"> <img src="/images/add_white_36dp.svg" alt="Add task Button"
+          id="add" Add /></button>
+
+    </form>
+
+    <ul class="do-items">
+      <li class="item" data-key="1594003133171">
+        <input class="checkbox" type="checkbox">
+        Code something
+        <button class="delete-button"></button>
+      </li>
+    </ul>
+    <div class="end-container">
+      <button class="delete-all-button"><img src="/images/delete_white_36dp.svg" alt="Delete all Button"
+          id="deleteIcon" /></button>
+      <button class="delete-done-button"><img src="/images/remove_done_white_36dp.svg" alt="Remove done Button"
+          id="deleteIcon" /></button>
+    </div>
+  </div>
+  <script type="text/javascript" src="main.js"></script>
 </body>
-<script src="main.js"></script>
 
 </html>
