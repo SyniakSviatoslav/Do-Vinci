@@ -207,5 +207,13 @@ box-shadow:  $white_hover;
 cursor: pointer;
 }
 
+#taskInput{
+  border: none;
+  outline: none;
+  width: 80%;
+  font-size: $m_font;
+  font-family: $primaryFont;
+}
+
 
 

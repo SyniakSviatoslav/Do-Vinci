@@ -2,8 +2,10 @@
 const doForm = document.querySelector('.do-form');
 const doInput = document.querySelector('.do-input');
 const doItemsList = document.querySelector('.do-items');
-const deleteEvery = document.querySelector('.delete-all-button')
-const deleteDone = document.querySelector('.delete-done-button')
+const deleteEvery = document.querySelector('.delete-all-button');
+const deleteDone = document.querySelector('.delete-done-button');
+const itemTask = document.querySelector('.li-item');
+
 
 let todos = [];
 
@@ -40,13 +42,14 @@ function renderTodos(todos) {
 
     li.innerHTML = `
       <input type="checkbox" class="checkbox" ${checked}>
-      ${item.name}
+      <input type="input" value="${item.name}" id="taskInput" maxlength = "30">
       <button class="delete-button">x</button>
     `;
     doItemsList.append(li);
   });
 
 }
+
 
 function addToLocalStorage(todos) {
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -94,9 +97,26 @@ function deleteComplete(todos) {
 
 getFromLocalStorage();
 
+// const inputTask = document.getElementById('taskInput');
+// inputTask.addEventListener('change', (event) => {
+//   localStorage.setItem(event.target.id, event.target.name);
+// });
+
+
+const inputTask = document.getElementById('taskInput');
+inputTask.addEventListener('change', updateValue);
+function updateValue(e) {
+  todos.item.name = e.target.name.value;
+}
+
 doItemsList.addEventListener('click', function (event) {
   if (event.target.type === 'checkbox') {
     toggle(event.target.parentElement.getAttribute('data-key'));
+  }
+
+  if (event.target.type === 'input'){
+    toggle(event.target.parentElement.getAttribute('data-key'));
+    console.log('data-key')
   }
 
   if (event.target.classList.contains('delete-button')) {
@@ -106,9 +126,9 @@ doItemsList.addEventListener('click', function (event) {
 
 deleteEvery.addEventListener('click', function () { deleteAll(todos) });
 deleteDone.addEventListener('click', function () { deleteComplete(todos) });
-doItemsList.addEventListener("click", function () {
-  doItemsList.contentEditable = true;
-});
-doForm.addEventListener("click", function () {
-  doItemsList.contentEditable = false;
-});
+// doItemsList.addEventListener("click", function () {
+//   doItemsList.contentEditable = true;
+// });
+// doForm.addEventListener("click", function () {
+//   doItemsList.contentEditable = false;
+// });

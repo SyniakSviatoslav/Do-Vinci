@@ -178,4 +178,11 @@ input[type='checkbox']:checked:after {
   box-shadow: 5px 5px 11px #cfcfcf, -5px -5px 11px #ffffff;
   cursor: pointer; }
 
+#taskInput {
+  border: none;
+  outline: none;
+  width: 80%;
+  font-size: 1.1rem;
+  font-family: "Caveat", cursive; }
+
 /*# sourceMappingURL=main.css.map */
