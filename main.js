@@ -42,7 +42,7 @@ function renderTodos(todos) {
 
     li.innerHTML = `
       <input type="checkbox" class="checkbox" ${checked}>
-      <input type="input" value="${item.name}" id="taskInput" maxlength = "30">
+      <input type="input" value="${item.name}" class="taskInput" maxlength = "35">
       <button class="delete-button">x</button>
     `;
     doItemsList.append(li);
@@ -97,17 +97,27 @@ function deleteComplete(todos) {
 
 getFromLocalStorage();
 
-// const inputTask = document.getElementById('taskInput');
-// inputTask.addEventListener('change', (event) => {
-//   localStorage.setItem(event.target.id, event.target.name);
-// });
+
+//edit
+
+document.querySelectorAll('.taskInput').forEach(item => {
+  item.addEventListener('input', event => {
+    addToLocalStorageObject
+  })
+})
 
 
-const inputTask = document.getElementById('taskInput');
-inputTask.addEventListener('change', updateValue);
-function updateValue(e) {
-  todos.item.name = e.target.name.value;
+let addToLocalStorageObject = function (todos, name, input) {
+	let existing = localStorage.getItem(name);
+	existing = existing ? JSON.parse(existing) : {};
+	existing[key] = value;
+	localStorage.setItem(name, JSON.stringify(existing));
 }
+
+
+
+
+
 
 doItemsList.addEventListener('click', function (event) {
   if (event.target.type === 'checkbox') {
@@ -126,9 +136,32 @@ doItemsList.addEventListener('click', function (event) {
 
 deleteEvery.addEventListener('click', function () { deleteAll(todos) });
 deleteDone.addEventListener('click', function () { deleteComplete(todos) });
-// doItemsList.addEventListener("click", function () {
-//   doItemsList.contentEditable = true;
+// inputTask.addEventListener("click", function () {
+//   inputTask.contentEditable = true;
 // });
 // doForm.addEventListener("click", function () {
 //   doItemsList.contentEditable = false;
 // });
+
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    else {        document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+    }    
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);

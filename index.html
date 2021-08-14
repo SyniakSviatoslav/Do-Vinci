@@ -9,13 +9,17 @@
 </head>
 
 <body>
+  
 
   <div class="container">
+
+    
+
     <h1>Do Vinci</h1>
 
     <form class="do-form">
       <input type="text" class="do-input" placeholder="Add a new task..." maxlength="
-      30">
+      35">
       <button type="submit" class="add-button"> <img src="/images/add_white_36dp.svg" alt="Add task Button"
           id="add"/></button>
 
@@ -29,10 +33,21 @@
       </li>
     </ul>
     <div class="end-container">
-      <button class="delete-all-button"><img src="/images/delete_white_36dp.svg" alt="Delete all Button"
-          id="deleteIcon" /></button>
-      <button class="delete-done-button"><img src="/images/remove_done_white_36dp.svg" alt="Remove done Button"
-          id="deleteIcon" /></button>
+
+      <div class="theme-switch-wrapper">
+        
+        <label class="theme-switch" for="checkbox">
+     <input type="checkbox" id="checkbox" />
+     <div class="slider round"></div>
+   </label>
+     <em>Enable Dark Mode!</em>
+     <button class="delete-all-button"><img src="/images/delete_white_36dp.svg" alt="Delete all Button"
+      id="deleteIcon" /></button>
+  <button class="delete-done-button"><img src="/images/remove_done_white_36dp.svg" alt="Remove done Button"
+      id="deleteIcon" /></button>
+   </div>
+
+      
     </div>
   </div>
   <script type="text/javascript" src="main.js"></script>

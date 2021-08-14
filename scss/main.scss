@@ -7,14 +7,44 @@
   margin: 0;
 }
 
+:root {
+  --primary-color: #f3a153;
+  --secondary-color: #f7fff7;
+  --font-color: #424242;
+  --bg-color: linear-gradient(#f3a153, #e8a15e);
+  --heading-color: #292922;
+  --container-shadow: 30px 30px 60px #cf8947, -30px -30px 60px #ffb95f;
+}
+
+[data-theme="dark"] {
+  --primary-color: #646469;
+  --secondary-color: #a1a2a5;
+  --font-color: #fbfbfd;
+  --bg-color: #303038;
+  --heading-color: #818cab;
+  --container-shadow: 30px 30px 60px #292930,
+  -30px -30px 60px #373740;
+}
+
+// body {
+// font-family: "Lato", sans-serif;
+// background-color: var(--bg-color);
+// color: var(--font-color);
+// max-width: 90%;
+// margin: 0 auto;
+// font-size: calc(1rem + 0.25vh);
+// }
+
+
 body {
   width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background: $gradient;
+  background: var(--bg-color);
   font-family: $primaryFont;
 }
+
 
 #add {
   display: flex;
@@ -24,14 +54,14 @@ body {
 
 button:hover {
   cursor: pointer;
-  background: $gradient;
-  box-shadow:  $hover_shadow;
+  background: var(--bg-color);
+  box-shadow:  var(--container-shadow);
 }
 
 button:focus {
   cursor: pointer;
   background: $orange;
-box-shadow: $focus_shadow;
+box-shadow: var(--container-shadow);
 }
 
 ul {
@@ -48,7 +78,7 @@ ul {
   flex-direction: column;
   align-items: center;
   padding: $s;
-  box-shadow: $container_shadow;
+  box-shadow: var(--container-shadow);
 }
 
 h1 {
@@ -63,7 +93,14 @@ h1 {
   justify-content: center;
 }
 
+::placeholder { 
+  color: var(--font-color);
+  opacity: 1; 
+}
+
 .do-input {
+  color: var(--font-color);
+  background-color: var(--secondary-color);
   cursor: pointer;
   width: 300px;
   border: none;
@@ -72,10 +109,11 @@ h1 {
   border-radius: $ts;
   padding: $es;
   font-size: $m_font;
-  box-shadow:  $container_shadow;
+  box-shadow:  var(--container-shadow);
   font-family: $secondaryFont;
   font-weight: 700;
 }
+
 
 .add-button {
   color: $white;
@@ -84,18 +122,18 @@ h1 {
   border-radius: $ts;
   padding: $ts;
   font-size: $m_font;
-  background: $orange;
-  box-shadow:  $container_shadow;
+  background: var(--primary-color);
+  box-shadow:  var(--container-shadow);
   font-family: $secondaryFont;
 }
 
 .do-items {
   min-width: 380px;
-  box-shadow:  $item_shadow;
+  box-shadow:  var(--container-shadow);
 }
 
 .item {
-  background-color: $white;
+  background-color: var(--secondary-color);
   padding: $es;
   font-size: $ml_font;
 }
@@ -130,32 +168,32 @@ h1 {
 .delete-all-button {
   display: flex;
   float: right;
-  margin-top: $ms;
-  margin-left: $ms;
+  // margin-top: $ms;
+  margin-left: 95px;
   color: $white;
   border: none;
   outline: none;
   border-radius: $ts;
   padding: $ts;
   font-size: $m_font;
-  background: $orange;
-  box-shadow: $container_shadow;
+  background: var(--primary-color);
+  box-shadow: var(--container-shadow);
   font-family: $secondaryFont
 }
 
 .delete-done-button {
   display: flex;
   float: right;
-  margin-top: $ms;
-  margin-left: $xs;
+  // margin-top: $ms;
+  margin-left: 20px;
   color: $white;
   border: none;
   outline: none;
   border-radius: $ts;
   padding: $ts;
   font-size: $m_font;
-  background: $orange;
-  box-shadow: $container_shadow;
+  background: var(--primary-color);
+  box-shadow: var(--container-shadow);
   font-family: $secondaryFont;
   
 }
@@ -163,7 +201,7 @@ h1 {
 .delete-button:hover {
 border-radius: $ts;
 background: $white_hover_background;
-box-shadow: $white_hover;
+box-shadow: none;
 }
 
 .delete-button:focus {
@@ -171,10 +209,6 @@ box-shadow: $white_hover;
   background: $white;
   box-shadow: $white_hover;
   }
-
-.checked { 
-  text-decoration: line-through;
-}
 
 input[type='checkbox']{
   cursor: pointer;
@@ -188,14 +222,17 @@ input[type='checkbox']{
   font-size: $s_font;
   line-height: $ts;
   border-radius: $ts;
-background: $white;
+background: rgb(197, 191, 191);
 
 }
+
 
 input[type='checkbox']:checked:after {
   content: '✔';
   color: $green;
   cursor: pointer;
+  border-radius: 2px;
+  background: var(--secondary-color);
 }
 
 
@@ -203,17 +240,80 @@ input[type='checkbox']:checked:after {
 .checkbox:hover{
   border-radius: $ts;
 background: $white_hover_background;
-box-shadow:  $white_hover;
 cursor: pointer;
 }
 
-#taskInput{
+.taskInput{
+  background-color: var(--secondary-color);
+  color: var(--font-color);
   border: none;
   outline: none;
   width: 80%;
   font-size: $m_font;
   font-family: $primaryFont;
 }
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: $ms;
+  // margin-left: 550px;
+  
+  em {
+    margin-left: 10px;
+    font-size: 1rem;
+    color: $white;
+  }
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: $orange;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 
 
 
