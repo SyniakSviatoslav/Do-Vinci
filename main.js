@@ -1,3 +1,4 @@
+//declarations 
 
 const doForm = document.querySelector('.do-form');
 const doInput = document.querySelector('.do-input');
@@ -5,15 +6,17 @@ const doItemsList = document.querySelector('.do-items');
 const deleteEvery = document.querySelector('.delete-all-button');
 const deleteDone = document.querySelector('.delete-done-button');
 const itemTask = document.querySelector('.li-item');
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme');
 
+//tasks-arrays:
 
 let todos = [];
+let oldTodos = JSON.parse(localStorage.getItem("todos"))
 
-doForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-  addTodo(doInput.value);
-});
+//functions:
 
+//creating task in js
 function addTodo(item) {
   if (item !== '') {
     const todo = {
@@ -28,6 +31,7 @@ function addTodo(item) {
   }
 }
 
+//creating task in html
 function renderTodos(todos) {
   doItemsList.innerHTML = '';
 
@@ -42,7 +46,7 @@ function renderTodos(todos) {
 
     li.innerHTML = `
       <input type="checkbox" class="checkbox" ${checked}>
-      <input type="input" value="${item.name}" class="taskInput" maxlength = "35">
+      <input type="input" value="${item.name}" class="taskInput" id ="${item.id}" maxlength = "35">
       <button class="delete-button">x</button>
     `;
     doItemsList.append(li);
@@ -50,12 +54,13 @@ function renderTodos(todos) {
 
 }
 
-
+//adding tasks to local Storage
 function addToLocalStorage(todos) {
   localStorage.setItem('todos', JSON.stringify(todos));
   renderTodos(todos);
 }
 
+//getting tasks from local Storage
 function getFromLocalStorage() {
   const reference = localStorage.getItem('todos');
   if (reference) {
@@ -64,6 +69,7 @@ function getFromLocalStorage() {
   }
 }
 
+//checking completed tasks
 function toggle(id) {
   todos.forEach(function (item) {
     if (item.id == id) {
@@ -74,6 +80,7 @@ function toggle(id) {
   addToLocalStorage(todos);
 }
 
+//deleting one task
 function deleteTodo(id) {
   todos = todos.filter(function (item) {
     return item.id != id;
@@ -81,50 +88,83 @@ function deleteTodo(id) {
   addToLocalStorage(todos);
 }
 
+//deleting all the tasks
 function deleteAll(todos) {
   todos = todos.filter(function (item) {
     return item < 0;
   });
-  addToLocalStorage(todos)
+  addToLocalStorage(todos);
+  getFromLocalStorage(todos);
 }
 
+//deleting completed tasks
 function deleteComplete(todos) {
   todos = todos.filter(function (item) {
     return !item.completed;
   });
   addToLocalStorage(todos);
+  getFromLocalStorage(todos);
+}
+
+//checking the current theme
+if (currentTheme) {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  if (currentTheme === 'dark') {
+    toggleSwitch.checked = true;
+  }
+}
+
+//switching to different theme
+function switchTheme(e) {
+  if (e.target.checked) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+  else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+  }
 }
 
 getFromLocalStorage();
 
+//event listeners:
 
-//edit
+//adding of task
+doForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  addTodo(doInput.value);
+});
 
+//editing the tasks
 document.querySelectorAll('.taskInput').forEach(item => {
   item.addEventListener('input', event => {
-    addToLocalStorageObject
+
+    let updatedTodos = oldTodos.reduce((acc, todo) => {
+
+      return [...acc, +event.target.id === todo.id ? {
+        ...todo,
+        name: event.target.value
+
+      } : todo]
+
+    }, [])
+    todos = updatedTodos;
+
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+
+
   })
 })
 
-
-let addToLocalStorageObject = function (todos, name, input) {
-	let existing = localStorage.getItem(name);
-	existing = existing ? JSON.parse(existing) : {};
-	existing[key] = value;
-	localStorage.setItem(name, JSON.stringify(existing));
-}
-
-
-
-
-
-
+//checking the tasks
 doItemsList.addEventListener('click', function (event) {
   if (event.target.type === 'checkbox') {
     toggle(event.target.parentElement.getAttribute('data-key'));
   }
 
-  if (event.target.type === 'input'){
+  if (event.target.type === 'input') {
     toggle(event.target.parentElement.getAttribute('data-key'));
     console.log('data-key')
   }
@@ -134,34 +174,13 @@ doItemsList.addEventListener('click', function (event) {
   }
 });
 
+//event listeners for delete and switch buttons
 deleteEvery.addEventListener('click', function () { deleteAll(todos) });
 deleteDone.addEventListener('click', function () { deleteComplete(todos) });
-// inputTask.addEventListener("click", function () {
-//   inputTask.contentEditable = true;
-// });
-// doForm.addEventListener("click", function () {
-//   doItemsList.contentEditable = false;
-// });
-
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-const currentTheme = localStorage.getItem('theme');
-
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-  
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-    }
-}
-
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    }
-    else {        document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-    }    
-}
-
 toggleSwitch.addEventListener('change', switchTheme, false);
+
+
+
+
+
+

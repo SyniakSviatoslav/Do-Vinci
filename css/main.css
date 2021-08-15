@@ -6,6 +6,10 @@
   padding: 0;
   margin: 0; }
 
+  ::-webkit-scrollbar {
+    width: 0px;
+}
+
 :root {
   --primary-color: #f3a153;
   --secondary-color: #f7fff7;
@@ -24,7 +28,6 @@
   -30px -30px 60px #373740; }
 
 body {
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;

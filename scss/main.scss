@@ -26,25 +26,13 @@
   -30px -30px 60px #373740;
 }
 
-// body {
-// font-family: "Lato", sans-serif;
-// background-color: var(--bg-color);
-// color: var(--font-color);
-// max-width: 90%;
-// margin: 0 auto;
-// font-size: calc(1rem + 0.25vh);
-// }
-
-
 body {
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   background: var(--bg-color);
   font-family: $primaryFont;
 }
-
 
 #add {
   display: flex;
@@ -168,7 +156,6 @@ h1 {
 .delete-all-button {
   display: flex;
   float: right;
-  // margin-top: $ms;
   margin-left: 95px;
   color: $white;
   border: none;
@@ -184,7 +171,6 @@ h1 {
 .delete-done-button {
   display: flex;
   float: right;
-  // margin-top: $ms;
   margin-left: 20px;
   color: $white;
   border: none;
@@ -257,7 +243,7 @@ cursor: pointer;
   display: flex;
   align-items: center;
   margin-top: $ms;
-  // margin-left: 550px;
+  
   
   em {
     margin-left: 10px;
